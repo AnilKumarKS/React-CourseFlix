@@ -1,12 +1,41 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+import AddCourse from './components/AddCourse';
+import 'bootstrap/dist/css/bootstrap.min.css'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import {BrowserRouter,NavLink} from 'react-router-dom'
+import Route from 'react-router-dom/Route'
+import CourseDetail from './components/CourseDetail';
+import {createStore} from 'redux';
+import rootReducer from './redux/reducer';
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+
+const store=createStore(rootReducer);
+
+ReactDOM.render(
+    <BrowserRouter>
+        <ul>
+            <li>
+                <NavLink exact activeStyle={{color:'red'}} to="/">Home</NavLink>
+            </li>
+            <li>
+                <NavLink exact activeStyle={{color:'red'}} to="/add">Add Course</NavLink>
+            </li>
+            <li>
+                <NavLink exact activeStyle={{color:'red'}} to="/courses/:id">Course Details</NavLink>
+            </li>
+            
+        </ul>
+        
+        <Route path="/" exact component={App}/>
+        <Route path="/add" exact component={AddCourse}/>
+        <Route path="/courses/:id" exact  render={
+            ({match})=>{
+                return (<CourseDetail selectedCourseId={match.params.id} />)
+            }
+        }
+        />
+
+    </BrowserRouter>, 
+        document.getElementById('root'));
