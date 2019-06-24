@@ -5,4 +5,4 @@ let rootReducer = function(currentState=courses,action){
     console.log(`The Curent State of the application is ${$currentState}`);
     return currentState;
 }
-export default reducer;
+export default rootReducer;
