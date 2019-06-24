@@ -1,18 +1,18 @@
 //declare all the actions in this file..
 
-//define action generators
+//define action generators 
 export function addCourse(course){
-    return{
+    console.log("inside add action")
+    return {
         type:"ADD_COURSE",
-        //course:course       ---If Variable name and values is same we can write only once
         course
-
     }
-
 }
 
 //action generators
-export function removeCourse(){
+export function removeCourse(index){
+    console.log('called by the component after component did mount');
+    //action is just a javascript object
     return {
         type:"REMOVE_COURSE",
         index

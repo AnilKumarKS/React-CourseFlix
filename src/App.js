@@ -1,6 +1,8 @@
 import React,{Component} from 'react';
+import './App.css';
 import Courses from './components/Courses';
-import CourseDetail from './components/CourseDetail';
+import { WrapperComponent } from './components/WrapperComponent ';
+// import CourseDetail from './components/CourseDetail';
 
 
 class App extends Component {
@@ -32,19 +34,26 @@ class App extends Component {
 
   
 
+  // render(){
+  //   let selectedCourse = this.state.courses.filter(course => course.selected);
+  //   console.log('inside tghe render method')
+  //   console.log(selectedCourse)
+  //   if(selectedCourse.length > 0) {
+  //     return (<CourseDetail course={selectedCourse[0]}/>)
+  //   } else {
+  //     return (
+  //       <div>
+  //         <Courses data={this.state.courses} handleClick={this.handleCourseClick}/>
+  //       </div>
+  //     );
+  //   }
+  // }
   render(){
-    let selectedCourse = this.state.courses.filter(course => course.selected);
-    console.log('inside tghe render method')
-    console.log(selectedCourse)
-    if(selectedCourse.length > 0) {
-      return (<CourseDetail course={selectedCourse[0]}/>)
-    } else {
-      return (
-        <div>
-          <Courses data={this.state.courses} handleClick={this.handleCourseClick}/>
-        </div>
-      );
-    }
+    return(
+      <div>
+       <WrapperComponent/>
+    </div>
+    );
   }
 }
 

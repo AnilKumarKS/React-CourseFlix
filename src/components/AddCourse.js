@@ -16,6 +16,7 @@ class AddCourse extends React.Component{
     }
     handleCourseName(event){
         //console.log(event.target.value);
+        this.setState({courseName:event.target.value});
         const value = event.target.value;
         if(value.length<4){
             this.setState({
@@ -29,15 +30,25 @@ class AddCourse extends React.Component{
         }
     }
     handleSubmit(event){
-        event.preventDefault();
-        console.log(event.target.courseName.value);
-        const course = {
-            title:event.target.courseName.value
-        };
-        const promise=axios.post('https://my-json-server.typicode.com/AnilKumarKS/Nature/products',{
-            method:'POST',
-            data:course
-        })
+        let data=
+            {
+                // name:this.state.courseName,
+                // price:this.state.coursePrice,
+                // duration:this.state.courseDuration
+                id: this.props.courses.length+1,
+                name:this.state.courseName,
+                price:this.state.coursePrice,
+                duration:this.state.courseDuration
+            }
+        
+       event.preventDefault();
+        // const promise=axios.post('https://my-json-server.typicode.com/AnilKumarKS/Nature/products',{
+        //     method:'POST',
+        //     data:data
+        // })
+        // promise.then(response=>response.data)
+
+        this.props.addCourse(data);
     }
     
     render(){

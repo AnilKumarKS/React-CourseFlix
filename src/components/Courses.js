@@ -6,19 +6,24 @@ class Courses extends Component {
         super(props);
     }
     
+    componentDidMount(){
+        //console.log('component mounted ....')
+     //   this.props.removeCourse(2);
+    }
+
     render(){
-        console.log(this.props.data);
+        console.log(this.props.courses);
         return (
             <div>
                 {
-                    this.props.data.length>0 ? (
+                    this.props.courses.length>0 ? (
                         <ul>
                             {
-                                this.props.data.map(course => 
+                                this.props.courses.map(course => 
                                 <li style={{listStyle:'none',margin:'20px',padding:'20px',fontSize:'20px',backgroundColor:'orange'}} key={course.id}
                                      id={course.id}
-                                        onClick={(event)=>this.props.handleClick(event)}>
-                                        {course.name}
+                                       onClick={()=>{this.props.removeCourse(course)}}>
+                                        {course.id}
                                         <NavLink exact to="/courses/{course.id}"></NavLink>
                                     </li>
                                 )
