@@ -17,15 +17,20 @@ class Courses extends Component {
             <div>
                 {
                     this.props.courses.length>0 ? (
+                           
                         <ul>
+                                <div className="col-md-4">Search : <input type="text" id="key" onChange="{searchFilter(event)}" placeholder="search here.." className="form-control" /></div>
                             {
                                 this.props.courses.map(course => 
-                                <li style={{listStyle:'none',margin:'20px',padding:'20px',fontSize:'20px',backgroundColor:'orange'}} key={course.id}
+                                    
+                                    <div className="col-md-3">
+                                    <li style={{listStyle:'none',margin:'20px',padding:'20px',fontSize:'20px',backgroundColor:'orange'}} key={course.id}
                                      id={course.id}
                                        onClick={()=>{this.props.removeCourse(course)}}>
-                                        {course.id}
+                                        {course.id}.{course.name}
                                         <NavLink exact to="/courses/{course.id}"></NavLink>
                                     </li>
+                                    </div>
                                 )
                             }
                         </ul>
