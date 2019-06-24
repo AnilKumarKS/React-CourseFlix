@@ -2,7 +2,6 @@
 
 //define action generators 
 export function addCourse(course){
-    console.log("inside add action")
     return {
         type:"ADD_COURSE",
         course
@@ -18,3 +17,13 @@ export function removeCourse(index){
         index
     }
 }
+
+//action generators
+export function searchCourse(search_key){
+    //action is just a javascript object
+    return {
+        type:"SEARCH_COURSE",
+        search_key
+    }
+}
+
